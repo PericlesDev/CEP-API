@@ -73,3 +73,36 @@ const toggleMessage = (msg) => {
     fadeElement.classList.toggle("hide");
     messageElement.classList.toggle("hide");
 }
+
+// Show or hide message
+const toggleMessage = (msg) => {
+  const fadeElement = document.querySelector("#fade");
+  const messageElement = document.querySelector("#message");
+
+  const messageTextElement = document.querySelector("#message p");
+
+  messageTextElement.innerText = msg;
+
+  fadeElement.classList.toggle("hide");
+  messageElement.classList.toggle("hide");
+};
+
+// Close message modal
+closeButton.addEventListener("click", () => toggleMessage());
+
+// Save address
+addressForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  toggleLoader();
+
+  setTimeout(() => {
+    toggleLoader();
+
+    toggleMessage("Endereço salvo com sucesso!");
+
+    addressForm.reset();
+
+    toggleDisabled();
+  }, 1000);
+});
